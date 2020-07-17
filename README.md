@@ -1,2 +1,2 @@
 # Testes Unitários
-Realização de testes unitários em app java
+Realização de testes unitários em app android
