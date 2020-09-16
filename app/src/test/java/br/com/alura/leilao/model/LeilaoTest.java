@@ -57,13 +57,13 @@ public class LeilaoTest {
         assertEquals(300, menorLanceComputador, delta);
     }
 
-    @Test
-    public void getMenorLance_QuandoRecebeMaisDeUmLance_EmOrdemDecrescente() {
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauricio"), 900));
-        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 300));
-        double menorLanceNotebook = LEILAO_CONSOLE.getMenorLance();
-        assertEquals(300, menorLanceNotebook, delta);
-    }
+//    @Test
+//    public void getMenorLance_QuandoRecebeMaisDeUmLance_EmOrdemDecrescente() {
+//        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauricio"), 900));
+//        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 300));
+//        double menorLanceNotebook = LEILAO_CONSOLE.getMenorLance();
+//        assertEquals(300, menorLanceNotebook, delta);
+//    }
 
     @Test
     public void testaListaTresMaioresLances_quandoRecebeExatosTresLances(){
@@ -129,5 +129,38 @@ public class LeilaoTest {
         assertEquals(600, listaTresMaioresLances.get(2).getValor(),delta);
         assertEquals(700, listaTresMaioresLances.get(1).getValor(),delta);
         assertEquals(700, listaTresMaioresLances.get(0).getValor(),delta);
+    }
+
+    @Test
+    public void  naoDeve_adicionarLance_quandoMenorQueMaiorLance(){
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fafa"), 1000));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Jojo"), 900));
+        assertEquals(1, LEILAO_CONSOLE.qtdLances());
+    }
+
+
+    @Test
+    public void  naoDeve_adicionarLance_quandoMesmoUsuarioDoUltimoLance(){
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1000));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Horacio"), 1010));
+        assertEquals(1, LEILAO_CONSOLE.qtdLances());
+    }
+
+    @Test
+    public void  naoDeve_adicionarLance_quandoUsuarioTemCincoLances(){
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1000));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1010));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1020));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1030));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1040));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1050));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1060));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1070));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1080));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1090));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1100));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1110));
+
+        assertEquals(10, LEILAO_CONSOLE.qtdLances());
     }
 }
