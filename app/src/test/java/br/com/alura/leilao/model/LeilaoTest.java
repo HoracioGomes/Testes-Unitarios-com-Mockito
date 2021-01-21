@@ -66,73 +66,73 @@ public class LeilaoTest {
 //    }
 
     @Test
-    public void testaListaTresMaioresLances_quandoRecebeExatosTresLances(){
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),500));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),600));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Adalberto"),700));
+    public void testaListaTresMaioresLances_quandoRecebeExatosTresLances() {
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 500));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 600));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Adalberto"), 700));
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(3, listaTresMaioresLances.size());
-        assertEquals(500, listaTresMaioresLances.get(2).getValor(),delta);
-        assertEquals(600, listaTresMaioresLances.get(1).getValor(),delta);
-        assertEquals(700, listaTresMaioresLances.get(0).getValor(),delta);
+        assertEquals(500, listaTresMaioresLances.get(2).getValor(), delta);
+        assertEquals(600, listaTresMaioresLances.get(1).getValor(), delta);
+        assertEquals(700, listaTresMaioresLances.get(0).getValor(), delta);
     }
 
 
     @Test
-    public void testaListaTresMaioresLances_quandoNaoRecebeLances(){
+    public void testaListaTresMaioresLances_quandoNaoRecebeLances() {
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(0, listaTresMaioresLances.size());
     }
 
 
     @Test
-    public void testaListaTresMaioresLances_quandoRecebeExatoUmLance(){
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),500));
+    public void testaListaTresMaioresLances_quandoRecebeExatoUmLance() {
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 500));
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(1, listaTresMaioresLances.size());
-        assertEquals(500, listaTresMaioresLances.get(0).getValor(),delta);
+        assertEquals(500, listaTresMaioresLances.get(0).getValor(), delta);
     }
 
 
     @Test
-    public void testaListaTresMaioresLances_quandoRecebeExatosDoisLances(){
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),600));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Adalberto"),700));
+    public void testaListaTresMaioresLances_quandoRecebeExatosDoisLances() {
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 600));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Adalberto"), 700));
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(2, listaTresMaioresLances.size());
-        assertEquals(600, listaTresMaioresLances.get(1).getValor(),delta);
-        assertEquals(700, listaTresMaioresLances.get(0).getValor(),delta);
+        assertEquals(600, listaTresMaioresLances.get(1).getValor(), delta);
+        assertEquals(700, listaTresMaioresLances.get(0).getValor(), delta);
     }
 
 
     @Test
-    public void testaListaTresMaioresLances_quandoRecebeExatosQuatroLances(){
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),500));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),600));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),700));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),800));
+    public void testaListaTresMaioresLances_quandoRecebeExatosQuatroLances() {
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 500));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 600));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 700));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 800));
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(3, listaTresMaioresLances.size());
-        assertEquals(600, listaTresMaioresLances.get(2).getValor(),delta);
-        assertEquals(700, listaTresMaioresLances.get(1).getValor(),delta);
-        assertEquals(800, listaTresMaioresLances.get(0).getValor(),delta);
+        assertEquals(600, listaTresMaioresLances.get(2).getValor(), delta);
+        assertEquals(700, listaTresMaioresLances.get(1).getValor(), delta);
+        assertEquals(800, listaTresMaioresLances.get(0).getValor(), delta);
     }
 
     @Test
-    public void testaListaTresMaioresLances_quandoRecebeExatosQuatroLances_eDoisMaioresLancesSaoIguais(){
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),500));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),600));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"),700));
-        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"),700));
+    public void testaListaTresMaioresLances_quandoRecebeExatosQuatroLances_eDoisMaioresLancesSaoIguais() {
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 500));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 600));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Mauro"), 700));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fabio"), 700));
         List<Lance> listaTresMaioresLances = LEILAO_CONSOLE.getTresMaioresLances();
         assertEquals(3, listaTresMaioresLances.size());
-        assertEquals(600, listaTresMaioresLances.get(2).getValor(),delta);
-        assertEquals(700, listaTresMaioresLances.get(1).getValor(),delta);
-        assertEquals(700, listaTresMaioresLances.get(0).getValor(),delta);
+        assertEquals(600, listaTresMaioresLances.get(2).getValor(), delta);
+        assertEquals(700, listaTresMaioresLances.get(1).getValor(), delta);
+        assertEquals(700, listaTresMaioresLances.get(0).getValor(), delta);
     }
 
     @Test
-    public void  naoDeve_adicionarLance_quandoMenorQueMaiorLance(){
+    public void naoDeve_adicionarLance_quandoMenorQueMaiorLance() {
         LEILAO_CONSOLE.propoe(new Lance(new Usuario("Fafa"), 1000));
         LEILAO_CONSOLE.propoe(new Lance(new Usuario("Jojo"), 900));
         assertEquals(1, LEILAO_CONSOLE.qtdLances());
@@ -140,14 +140,14 @@ public class LeilaoTest {
 
 
     @Test
-    public void  naoDeve_adicionarLance_quandoMesmoUsuarioDoUltimoLance(){
+    public void naoDeve_adicionarLance_quandoMesmoUsuarioDoUltimoLance() {
         LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1000));
         LEILAO_CONSOLE.propoe(new Lance(new Usuario("Horacio"), 1010));
         assertEquals(1, LEILAO_CONSOLE.qtdLances());
     }
 
     @Test
-    public void  naoDeve_adicionarLance_quandoUsuarioTemCincoLances(){
+    public void naoDeve_adicionarLance_quandoUsuarioTemCincoLances() {
         LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1000));
         LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1010));
         LEILAO_CONSOLE.propoe(new Lance(HORACIO, 1020));
@@ -162,5 +162,16 @@ public class LeilaoTest {
         LEILAO_CONSOLE.propoe(new Lance(new Usuario("Marisa"), 1110));
 
         assertEquals(10, LEILAO_CONSOLE.qtdLances());
+    }
+
+    @Test
+    public void deve_devolverZeroParaMaiorLance_quandoNaoHouverLances() {
+        double maiorLanceDevolvido = LEILAO_CONSOLE.getMaiorLance();
+        assertEquals(0.0, maiorLanceDevolvido, delta);
+    }
+    @Test
+    public void deve_devolverZeroParaMenorLance_quandoNaoHouverLances() {
+        double menorLanceDevolvido = LEILAO_CONSOLE.getMenorLance();
+        assertEquals(0.0, menorLanceDevolvido, delta);
     }
 }
