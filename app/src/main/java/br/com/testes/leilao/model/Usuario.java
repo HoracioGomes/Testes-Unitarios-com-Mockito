@@ -24,4 +24,8 @@ public class Usuario implements Serializable {
     public int hashCode() {
         return nome.hashCode();
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
