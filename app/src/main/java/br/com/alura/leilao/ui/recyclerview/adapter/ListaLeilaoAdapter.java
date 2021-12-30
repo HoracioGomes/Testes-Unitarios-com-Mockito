@@ -8,20 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.alura.leilao.R;
+import br.com.alura.leilao.formatter.FormatadorDeMoeda;
 import br.com.alura.leilao.model.Leilao;
 
 public class ListaLeilaoAdapter extends RecyclerView.Adapter<ListaLeilaoAdapter.ViewHolder> {
 
     private final List<Leilao> leiloes;
     private final Context context;
+    private final FormatadorDeMoeda formatadorDeMoeda;
     private OnItemClickListener onItemClickListener;
 
-    public ListaLeilaoAdapter(Context context, List<Leilao> leiloes) {
+    public ListaLeilaoAdapter(Context context) {
         this.context = context;
-        this.leiloes = leiloes;
+        this.leiloes = new ArrayList<>();
+        this.formatadorDeMoeda = new FormatadorDeMoeda();
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -46,6 +50,16 @@ public class ListaLeilaoAdapter extends RecyclerView.Adapter<ListaLeilaoAdapter.
         return leiloes.size();
     }
 
+    public void atualiza(List<Leilao> leiloes) {
+        this.leiloes.clear();
+        this.leiloes.addAll(leiloes);
+        atualizaLista();
+    }
+
+    public void atualizaLista() {
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView descricao;
@@ -67,12 +81,12 @@ public class ListaLeilaoAdapter extends RecyclerView.Adapter<ListaLeilaoAdapter.
         void vincula(Leilao leilao) {
             this.leilao = leilao;
             descricao.setText(leilao.getDescricao());
-            maiorLance.setText(String.valueOf(leilao.getMaiorLance()));
+            maiorLance.setText(formatadorDeMoeda.formata(leilao.getMaiorLance()));
         }
 
     }
 
-    public Leilao pegaLeilaoPorPosicao(int posicao) {
+    private Leilao pegaLeilaoPorPosicao(int posicao) {
         return this.leiloes.get(posicao);
     }
 

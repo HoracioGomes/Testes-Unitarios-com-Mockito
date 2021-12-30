@@ -21,9 +21,10 @@ public class ListaLeilaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_leilao);
-        ListaLeilaoAdapter adapter = new ListaLeilaoAdapter(this, leiloesDeExemplo());
+        ListaLeilaoAdapter adapter = new ListaLeilaoAdapter(this);
         RecyclerView recyclerView = findViewById(R.id.lista_leilao_recyclerview);
         recyclerView.setAdapter(adapter);
+        adapter.atualiza(leiloesDeExemplo());
         adapter.setOnItemClickListener(new ListaLeilaoAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Leilao leilao) {
