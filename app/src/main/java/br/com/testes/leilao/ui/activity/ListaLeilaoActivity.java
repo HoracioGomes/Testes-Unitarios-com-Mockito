@@ -1,4 +1,4 @@
-package br.com.alura.leilao.ui.activity;
+package br.com.testes.leilao.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.alura.leilao.R;
-import br.com.alura.leilao.model.Lance;
-import br.com.alura.leilao.model.Leilao;
-import br.com.alura.leilao.model.Usuario;
-import br.com.alura.leilao.ui.recyclerview.adapter.ListaLeilaoAdapter;
+import br.com.testes.leilao.R;
+import br.com.testes.leilao.model.Lance;
+import br.com.testes.leilao.model.Leilao;
+import br.com.testes.leilao.model.Usuario;
+import br.com.testes.leilao.ui.recyclerview.adapter.ListaLeilaoAdapter;
 
 public class ListaLeilaoActivity extends AppCompatActivity {
 

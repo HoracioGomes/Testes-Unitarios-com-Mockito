@@ -1,4 +1,4 @@
-package br.com.alura.leilao.model;
+package br.com.testes.leilao.model;
 
 import java.io.Serializable;
 

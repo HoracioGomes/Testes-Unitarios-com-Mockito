@@ -1,4 +1,4 @@
-package br.com.alura.leilao.ui.recyclerview.adapter;
+package br.com.testes.leilao.ui.recyclerview.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.alura.leilao.R;
-import br.com.alura.leilao.formatter.FormatadorDeMoeda;
-import br.com.alura.leilao.model.Leilao;
+import br.com.testes.leilao.R;
+import br.com.testes.leilao.formatter.FormatadorDeMoeda;
+import br.com.testes.leilao.model.Leilao;
 
 public class ListaLeilaoAdapter extends RecyclerView.Adapter<ListaLeilaoAdapter.ViewHolder> {
 

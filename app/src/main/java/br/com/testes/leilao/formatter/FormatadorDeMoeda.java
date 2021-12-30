@@ -1,4 +1,4 @@
-package br.com.alura.leilao.formatter;
+package br.com.testes.leilao.formatter;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

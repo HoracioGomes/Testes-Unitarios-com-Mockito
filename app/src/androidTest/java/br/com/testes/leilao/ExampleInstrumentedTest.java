@@ -1,4 +1,4 @@
-package br.com.alura.leilao;
+package br.com.testes.leilao;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("br.com.alura.leilao", appContext.getPackageName());
+        assertEquals("br.com.testes.leilao", appContext.getPackageName());
     }
 }

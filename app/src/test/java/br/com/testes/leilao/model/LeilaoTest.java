@@ -1,14 +1,10 @@
-package br.com.alura.leilao.model;
+package br.com.testes.leilao.model;
 
-import android.util.Log;
-
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.regex.Matcher;
 
 import static org.hamcrest.CoreMatchers.both;
 import static org.hamcrest.CoreMatchers.equalTo;

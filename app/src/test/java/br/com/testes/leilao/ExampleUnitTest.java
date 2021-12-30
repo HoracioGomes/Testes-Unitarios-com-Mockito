@@ -1,4 +1,4 @@
-package br.com.alura.leilao;
+package br.com.testes.leilao;
 
 import org.junit.Test;
 

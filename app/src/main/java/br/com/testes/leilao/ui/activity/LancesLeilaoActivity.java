@@ -1,13 +1,13 @@
-package br.com.alura.leilao.ui.activity;
+package br.com.testes.leilao.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import br.com.alura.leilao.R;
-import br.com.alura.leilao.model.Lance;
-import br.com.alura.leilao.model.Leilao;
+import br.com.testes.leilao.R;
+import br.com.testes.leilao.model.Lance;
+import br.com.testes.leilao.model.Leilao;
 
 public class LancesLeilaoActivity extends AppCompatActivity {
 
