@@ -1,10 +1,21 @@
 package br.com.alura.leilao.model;
 
+import android.util.Log;
+
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
+import static org.hamcrest.CoreMatchers.both;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class LeilaoTest {
 
@@ -12,17 +23,46 @@ public class LeilaoTest {
     private final Usuario HORACIO = new Usuario("Horacio");
     private final Leilao LEILAO_CONSOLE = new Leilao("PS5");
 
+    @Before
+    public void instancias() {
+    }
+
     @Test
     public void getDescricao_QuandoRecebeDescricao() {
         String descricao = LEILAO_CONSOLE.getDescricao();
-        assertEquals("PS5", descricao);
+        assertThat(descricao, is(equalTo("PS5")));
     }
+
 
     @Test
     public void getMaiorLance_QuandoRecebeUmLance() {
         LEILAO_CONSOLE.propoe(new Lance(HORACIO, 500.));
         double maiorLanceRecebido = LEILAO_CONSOLE.getMaiorLance();
         assertEquals(500, maiorLanceRecebido, delta);
+    }
+
+    @Test
+    public void deve_devolverTresMaioresLances_quando_recebeQuatroLances() {
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 100.));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("Maria"), 200.));
+        LEILAO_CONSOLE.propoe(new Lance(HORACIO, 99.));
+        LEILAO_CONSOLE.propoe(new Lance(new Usuario("João"), 500.5));
+
+        List<Lance> tresMaioresLancesDevolvidos = LEILAO_CONSOLE.getTresMaioresLances();
+
+//        for (int i = 0; i < tresMaioresLancesDevolvidos.size(); i++) {
+//            System.out.println("" + tresMaioresLancesDevolvidos.get(i).getValor());
+//        }
+
+        assertThat(tresMaioresLancesDevolvidos, both(Matchers.<Lance>hasSize(3))
+                .and(contains(
+                        new Lance(new Usuario("João"), 500.5),
+                        new Lance(new Usuario("Maria"), 200.),
+                        new Lance(HORACIO, 100.)
+
+                        )
+                )
+        );
     }
 
     @Test
@@ -169,6 +209,7 @@ public class LeilaoTest {
         double maiorLanceDevolvido = LEILAO_CONSOLE.getMaiorLance();
         assertEquals(0.0, maiorLanceDevolvido, delta);
     }
+
     @Test
     public void deve_devolverZeroParaMenorLance_quandoNaoHouverLances() {
         double menorLanceDevolvido = LEILAO_CONSOLE.getMenorLance();
