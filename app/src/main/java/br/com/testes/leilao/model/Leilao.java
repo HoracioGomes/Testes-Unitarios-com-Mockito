@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Leilao implements Serializable {
-
+    private final long id;
     private final String descricao;
     private final List<Lance> lances;
     private double maiorLance = 0.0;
@@ -14,6 +14,7 @@ public class Leilao implements Serializable {
     private int contQtdMaxLances;
 
     public Leilao(String descricao) {
+        this.id = 0L;
         this.descricao = descricao;
         this.lances = new ArrayList<>();
     }
@@ -108,5 +109,16 @@ public class Leilao implements Serializable {
 
     public int qtdLances() {
         return lances.size();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Leilao leilao = (Leilao) o;
+
+        if (id != leilao.id) return false;
+        return descricao != null ? descricao.equals(leilao.descricao) : leilao.descricao == null;
     }
 }
