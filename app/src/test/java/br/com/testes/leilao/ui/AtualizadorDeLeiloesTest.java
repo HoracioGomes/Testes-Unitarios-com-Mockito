@@ -18,6 +18,8 @@ import br.com.testes.leilao.model.Leilao;
 import br.com.testes.leilao.ui.recyclerview.adapter.ListaLeilaoAdapter;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -55,5 +57,21 @@ public class AtualizadorDeLeiloesTest {
         )));
 
     }
+
+    @Test
+    public void deve_ApresentarMensagemDeFalha_quando_falharABuscaDeLeiloes() {
+        AtualizadorDeLeiloes atualizador = new AtualizadorDeLeiloes();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                RespostaListener<List<Leilao>> argument = invocation.getArgument(0);
+                argument.falha(anyString());
+                return null;
+            }
+        }).when(client).todos(any(RespostaListener.class));
+        atualizador.buscaLeiloes(adapter, client, listener);
+        verify(listener).erroAoCarregar(anyString());
+    }
+
 
 }
